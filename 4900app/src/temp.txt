@@ -1,0 +1,20 @@
+<ReactCardFlip
+                isFlipped={this.state.isFlipped}
+                flipDirection="vertical"
+              >
+                <li key="front">
+                  <li key={item.symbol}>
+                    Stock: {item.symbol} | Latest Price: {item.latestPrice}
+                  </li>
+
+                  <button onClick={this.handleClick}>Click to flip</button>
+                </li>
+                <li key="back">
+                  <li key={item.symbol}>
+                    Company Name: {item.companyName} | High: {item.high} | Low:{" "}
+                    {item.low}
+                  </li>
+
+                  <button onClick={this.handleClick}>Click to flip</button>
+                </li>
+              </ReactCardFlip>
