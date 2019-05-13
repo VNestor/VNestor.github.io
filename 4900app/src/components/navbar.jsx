@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import {
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import App from "../App";
 import About from "./about";
 import Favorites from "./favorites";
@@ -55,10 +60,10 @@ class NavBar extends Component {
           </form>
 
           <Switch>
-            <Route exact={true} path="./App" component={App} />
-            <Route exact={true} path="./news" component={News} />
-            <Route exact={true} path="./favorites" component={Favorites} />
-            <Route exact={true} path="./about" component={About} />
+            <Router path="/" exact={true} component={App} />
+            <Router path="/News" exact={true} component={News} />
+            <Router path="/Favorites" exact={true} component={Favorites} />
+            <Router path="/About" exact={true} component={About} />
           </Switch>
         </nav>
       </React.Fragment>

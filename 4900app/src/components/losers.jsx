@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import ReactCardFlip from "react-card-flip";
 import styles from "../index.css";
+
 import { Card, CardBody, Button, CardHeader } from "reactstrap";
 
-class Losers extends Component {
+const BASEURL = "https://cloud.iexapis.com/v1/stock/market/list/";
+const TYPE = "losers";
+const TOKEN = "?token=pk_b24a0719ee7f4415b33737e51e8ef7f8";
+
+class Gainers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +20,7 @@ class Losers extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      "https://cloud.iexapis.com/v1/stock/market/list/losers?token=pk_b24a0719ee7f4415b33737e51e8ef7f8"
-    )
+    fetch(BASEURL + TYPE + TOKEN)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -60,6 +63,9 @@ class Losers extends Component {
                           <CardHeader>{item.symbol}</CardHeader>
                           Latest Price: ${item.latestPrice}
                           <br />
+                          Change: ${item.change.toFixed(2)}
+                          <br />% Change: &nbsp;
+                          {(item.changePercent * 100).toFixed(2)}%
                         </CardBody>
                       </div>
                     </div>
@@ -70,7 +76,17 @@ class Losers extends Component {
                           <CardHeader>{item.companyName}</CardHeader>
                           High: ${item.high} <br /> Low: ${item.low}
                           <br />
-                          Test: ${(item.high - item.low).toFixed(2)}
+                          Volume:{" "}
+                          {new Intl.NumberFormat().format(item.latestVolume)}
+                          <br />
+                          Avg Vol:{" "}
+                          {new Intl.NumberFormat().format(item.avgTotalVolume)}
+                          <br />
+                          Market Cap:{" "}
+                          {new Intl.NumberFormat().format(item.marketCap)}
+                          <br />
+                          PE Ratio:{" "}
+                          {item.peRatio == null ? "N/A" : item.peRatio}
                         </CardBody>
                       </div>
                     </div>
@@ -90,4 +106,4 @@ class Losers extends Component {
   }
 }
 
-export default Losers;
+export default Gainers;

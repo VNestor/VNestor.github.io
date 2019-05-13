@@ -4,6 +4,13 @@
   margin: 0 auto;
 }
 
+.button {
+  display: block !important;
+  float: right !important;
+  max-width: 300px !important;
+  margin: auto !important;
+}
+
 .container {
   box-sizing: border-box !important;
   display: flex !important;

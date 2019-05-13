@@ -5,20 +5,19 @@ import Losers from "./components/losers";
 import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       showComponent: false,
-      isOpened: false
+      api: "gainers"
     };
     this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   onButtonClick() {
-    this.setState({
-      showComponent: true,
-      isOpened: !this.state.isOpened
-    });
+    this.setState(state => ({
+      showComponent: !state.showComponent
+    }));
   }
 
   render() {
@@ -26,8 +25,17 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <NavBar />
+          <button onClick={() => this.setState({ api: "gainers" })}>
+            Gainers
+          </button>
+          <button onClick={() => this.setState({ api: "losers" })}>
+            Losers
+          </button>
           <button onClick={this.onButtonClick}>Button</button>
-          <div>{this.state.showComponent ? <Gainers /> : <Losers />}</div>
+          <div>
+            {this.state.showComponent ? null : <Gainers {...this.state} />}
+            {console.log(this.props.showComponent)}
+          </div>
         </React.Fragment>
       </BrowserRouter>
     );

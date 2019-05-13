@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import ReactCardFlip from "react-card-flip";
 import styles from "../index.css";
+
 import { Card, CardBody, Button, CardHeader } from "reactstrap";
+
+const BASEURL = "https://cloud.iexapis.com/v1/stock/market/list/";
+const TYPE = "gainers";
+const TOKEN = "?token=pk_b24a0719ee7f4415b33737e51e8ef7f8";
 
 class Gainers extends Component {
   constructor(props) {
@@ -9,15 +14,15 @@ class Gainers extends Component {
     this.state = {
       items: [],
       isLoaded: false,
-      isFlipped: false
+      isFlipped: false,
+      api: this.props.api,
+      update: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    fetch(
-      "https://cloud.iexapis.com/v1/stock/market/list/gainers?token=pk_b24a0719ee7f4415b33737e51e8ef7f8"
-    )
+    fetch(BASEURL + this.props.api + TOKEN)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -25,6 +30,12 @@ class Gainers extends Component {
           items: json
         });
       });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.api !== nextProps.api) {
+      this.setState({ update: true });
+    }
   }
 
   handleClick(event) {
@@ -60,6 +71,9 @@ class Gainers extends Component {
                           <CardHeader>{item.symbol}</CardHeader>
                           Latest Price: ${item.latestPrice}
                           <br />
+                          Change: ${item.change.toFixed(2)}
+                          <br />% Change: &nbsp;
+                          {(item.changePercent * 100).toFixed(2)}%
                         </CardBody>
                       </div>
                     </div>
@@ -70,7 +84,17 @@ class Gainers extends Component {
                           <CardHeader>{item.companyName}</CardHeader>
                           High: ${item.high} <br /> Low: ${item.low}
                           <br />
-                          Test: ${(item.high - item.low).toFixed(2)}
+                          Volume:{" "}
+                          {new Intl.NumberFormat().format(item.latestVolume)}
+                          <br />
+                          Avg Vol:{" "}
+                          {new Intl.NumberFormat().format(item.avgTotalVolume)}
+                          <br />
+                          Market Cap:{" "}
+                          {new Intl.NumberFormat().format(item.marketCap)}
+                          <br />
+                          PE Ratio:{" "}
+                          {item.peRatio == null ? "N/A" : item.peRatio}
                         </CardBody>
                       </div>
                     </div>
@@ -82,6 +106,8 @@ class Gainers extends Component {
                   </Button>
                 </Card>
               ))}
+              {console.log(this.props.update)}
+              {console.log(this.props.api)}
             </div>
           </main>
         </React.Fragment>
