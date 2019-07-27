@@ -1,2 +1,2 @@
-# Stock-App-Project
-4900 Project. Use API to make a stock web app.
+# SimpleStockApp
+4900 Project. This is a simple financial web app using react.
