@@ -1,3 +1,7 @@
+/**
+ 
+ */
+
 import React, { Component } from "react";
 import Gainers from "./gainers";
 import styles from "../index.css";

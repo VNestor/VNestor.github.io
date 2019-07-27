@@ -1,3 +1,10 @@
+/**
+ News Component
+ API provided by Stock News API
+ This component retrieves data from Stock News and displays
+ it in an esy to read format. 
+ */
+
 import React, { Component } from "react";
 
 const TOKEN = `${process.env.REACT_APP_STOCKNEWS_KEY}`;

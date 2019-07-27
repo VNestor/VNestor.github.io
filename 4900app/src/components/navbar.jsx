@@ -1,3 +1,8 @@
+/** 
+ Navbar component
+ Uses react-router-dom to link various components
+ */
+
 import React, { Component } from "react";
 import { BrowserRouter as Route, NavLink } from "react-router-dom";
 
@@ -21,6 +26,12 @@ class NavBar extends Component {
               <li className="nav-item">
                 <a className="nav-link">
                   <NavLink to="/News">News</NavLink>
+                </a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link">
+                  <NavLink to="/Search">Search</NavLink>
                 </a>
               </li>
 

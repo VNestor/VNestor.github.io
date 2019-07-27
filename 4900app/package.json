@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "jquery": "^3.4.1",
@@ -19,8 +19,6 @@
     "xml2js": "^0.4.19"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
@@ -43,6 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage" : "http://vicdoom.github.io/"
+  "homepage": "http://vnestor.github.io/"
 }
-
