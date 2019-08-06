@@ -49,7 +49,10 @@ class News extends Component {
                     <h2>{article.title}</h2>
                     <h5>{article.date}</h5>
                     <p>
-                      {article.text}..<a href={article.news_url}>Read More</a>
+                      {article.text}..
+                      <a href={article.news_url} target="_blank">
+                        Read More
+                      </a>
                     </p>
                     Source: {article.source_name}
                   </div>
