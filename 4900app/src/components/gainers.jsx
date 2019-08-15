@@ -86,14 +86,26 @@ class Gainers extends Component {
                       <div key={item.symbol}>
                         <CardBody>
                           <CardHeader>{item.symbol}</CardHeader>
-                          Latest Price: ${item.latestPrice.toFixed(2)}
+                          Latest Price:{" "}
+                          {item.latestPrice == null
+                            ? "N/A"
+                            : "$" + item.latestPrice.toFixed(2)}
                           <br />
-                          Change: ${item.change.toFixed(2)}
-                          <br />% Change: &nbsp;
-                          {(item.changePercent * 100).toFixed(2)}%
+                          Change:{" "}
+                          {item.change == null
+                            ? "N/A"
+                            : "$" + item.change.toFixed(2)}
+                          <br />% Change:{" "}
+                          {item.changePercent == null
+                            ? "N/A"
+                            : (item.changePercent * 100).toFixed(2)}
+                          %
                           <br />
-                          High: ${item.high.toFixed(2)} <br /> Low: $
-                          {item.low.toFixed(2)}
+                          High:{" "}
+                          {item.high == null
+                            ? "N/A"
+                            : "$" + item.high.toFixed(2)}{" "}
+                          <br /> Low: ${item.low.toFixed(2)}
                           <br />
                         </CardBody>
                       </div>
@@ -104,13 +116,21 @@ class Gainers extends Component {
                         <CardBody>
                           <CardHeader>{item.companyName}</CardHeader>
                           Volume:{" "}
-                          {new Intl.NumberFormat().format(item.latestVolume)}
+                          {item.latestVolume == null
+                            ? "N/A"
+                            : new Intl.NumberFormat().format(item.latestVolume)}
                           <br />
                           Avg Vol:{" "}
-                          {new Intl.NumberFormat().format(item.avgTotalVolume)}
+                          {item.avgTotalVolume == null
+                            ? "N/A"
+                            : new Intl.NumberFormat().format(
+                                item.avgTotalVolume
+                              )}
                           <br />
                           Market Cap:{" "}
-                          {new Intl.NumberFormat().format(item.marketCap)}
+                          {item.marketCap == null
+                            ? "N/A"
+                            : new Intl.NumberFormat().format(item.marketCap)}
                           <br />
                           PE Ratio:{" "}
                           {item.peRatio == null ? "N/A" : item.peRatio}
