@@ -86,27 +86,14 @@ class Gainers extends Component {
                       <div key={item.symbol}>
                         <CardBody>
                           <CardHeader>{item.symbol}</CardHeader>
-                          Latest Price:{" "}
-                          {item.latestPrice == null
-                            ? "N/A"
-                            : "$" + item.latestPrice.toFixed(2)}
+                          Latest Price: ${item.latestPrice.toFixed(2)}
                           <br />
-                          Change:{" "}
-                          {item.change == null
-                            ? "N/A"
-                            : "$" + item.change.toFixed(2)}
-                          <br />% Change:{" "}
-                          {item.changePercent == null
-                            ? "N/A"
-                            : (item.changePercent * 100).toFixed(2)}
-                          %
+                          Change: ${item.change.toFixed(2)}
+                          <br />% Change: &nbsp;
+                          {(item.changePercent * 100).toFixed(2)}%
                           <br />
-                          High:{" "}
-                          {item.high == null
-                            ? "N/A"
-                            : "$" + item.high.toFixed(2)}{" "}
-                          <br /> Low:{" "}
-                          {item.low == null ? "N/A" : "$" + item.low.toFixed(2)}
+                          High: ${item.high.toFixed(2)} <br /> Low: $
+                          {item.low.toFixed(2)}
                           <br />
                         </CardBody>
                       </div>
